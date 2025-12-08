@@ -1,0 +1,32 @@
+
+class App1(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        screen_width = int(self.winfo_screenwidth()/2)
+        screen_height = int(self.winfo_screenheight()/2)
+
+        self.title("TruckCane")
+        self.geometry(f"{screen_width}x{screen_height}")
+        self.state("zoomed")
+        self.current_screen = None
+        
+        self.screens = {
+            "mainFrame": mainFrame,
+            "cameraFrame": cameraFrame,
+            "filesFrame": filesFrame,
+            "predictionFrame": predictionFrame
+        }
+        
+        self.switch_screen("mainFrame")
+
+    def switch_screen(self, screen_name, filename=None):
+        if self.current_screen is not None:
+            self.current_screen.destroy()
+        
+        screen_class = self.screens[screen_name]
+
+        if screen_name == "predictionFrame":
+            self.current_screen = screen_class(self, self.switch_screen, filename)
+        else:
+            self.current_screen = screen_class(self, self.switch_screen)
+        self.current_screen.pack(fill="both", expand=True)
