@@ -15,15 +15,10 @@ matplotlib
 mpmath
 networkx
 numpy
-opencv-python
 packaging
 pillow
-polars
 psutil
 pyparsing
-PyQt6
-PyQt6-Qt6
-PyQt6_sip
 python-dateutil
 PyYAML
 requests
