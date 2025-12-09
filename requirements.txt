@@ -30,9 +30,10 @@ requests
 scipy
 six
 sympy
-torch
-torchaudio
-torchvision
+torch==2.1.2+cpu
+torchaudio==2.1.2+cpu
+torchvision==0.16.2+cpu
 typing_extensions
 ultralytics
 urllib3
+
