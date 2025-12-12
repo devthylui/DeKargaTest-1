@@ -242,15 +242,17 @@ class cameraFrame(QMainWindow):
     def update_frame(self):
         if not self.captured and self.isDisplayed and self.cap != None:
             try:
-                # Capture frame (we configured it as BGR888)
+                # 1. Get RAW BGR data
                 frame = self.cap.capture_array()
+                
+                # 2. OPTIONAL SWAP (Only uncomment this single line if still violet)
+                # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
                 
-                # --- FIX: Tell Qt that the data is Format_BGR888 ---
-                # This aligns the BGR camera data with the BGR display format.
-                self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_BGR888)
+                # 3. Create image (Format_RGB888 often treats BGR data as RGB on RPi)
+                self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
                 
                 pix = QPixmap.fromImage(self.qt_img)
                 self.cameraLabel.setPixmap(pix)
@@ -261,7 +263,7 @@ class cameraFrame(QMainWindow):
         if self.cap is None:
             self.cap = Picamera2()
             
-            # --- FIX: Explicitly request BGR888 ---
+            # 1. Configure as BGR888 (The standard)
             config = self.cap.create_video_configuration(
                 main={"size": (640, 480), "format": "BGR888"}
             )
