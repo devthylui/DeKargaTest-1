@@ -13,6 +13,8 @@ from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QPixmap, QImage
 
+from picamera2 import Picamera2
+
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):  # Running from exe
         base_path = sys._MEIPASS
@@ -239,27 +241,39 @@ class cameraFrame(QMainWindow):
         self.timer.timeout.connect(self.update_frame)
         self.timer.start(30)
     
+    #Picamera2 capture_array() ---
     def update_frame(self):
         if not self.captured and self.isDisplayed and self.cap != None:
-            ret, frame = self.cap.read()
-            if ret:
+            try:
+                frame = self.cap.capture_array()
+                
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
                 self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
                 pix = QPixmap.fromImage(self.qt_img)
                 self.cameraLabel.setPixmap(pix)
+            except Exception as e:
+                pass
     
     def showEvent(self, event):
         if self.cap is None:
-            self.cap = cv2.VideoCapture(0)
+            self.cap = Picamera2()
+            # Configure for 640x480 BGR (OpenCV compatible)
+            config = self.cap.create_video_configuration(
+                main={"size": (640, 480), "format": "BGR888"}
+            )
+            self.cap.configure(config)
+            self.cap.start()
             self.isDisplayed = True
         super().showEvent(event)
 
     def closeEvent(self, event):
         if self.cap is not None:
             self.isDisplayed = False
-            self.cap.release()
+            self.cap.stop()
+            self.cap.close()
             self.cap = None
         super().closeEvent(event)
 
@@ -277,8 +291,10 @@ class cameraFrame(QMainWindow):
                 self.pushButton_2.setText(_translate("self", "Predict"))
                 self.pushButton.setText(_translate("self", "Cancel"))
             case 1:
-                self.cap.release()
+                self.cap.stop()
+                self.cap.close()
                 self.cap = None
+                
                 self.captured = False
                 self.state = 0
                 self.pushButton_2.setText(_translate("self", "Capture"))
@@ -290,8 +306,10 @@ class cameraFrame(QMainWindow):
         match self.state:
             case 0:
                 self.isDisplayed = False
-                self.cap.release()
-                self.cap = None
+                if self.cap is not None:
+                    self.cap.stop()
+                    self.cap.close()
+                    self.cap = None
                 switch_callback("main")
             case 1:
                 self.captured = False
