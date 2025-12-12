@@ -36,7 +36,7 @@ class cameraFrame(QMainWindow):
         self.qt_img = None
         
         self.setObjectName("mainFrame")
-        self.resize(800, 600)
+        self.resize(800, 480)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
