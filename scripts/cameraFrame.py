@@ -242,11 +242,16 @@ class cameraFrame(QMainWindow):
     def update_frame(self):
         if not self.captured and self.isDisplayed and self.cap != None:
             try:
+                # Capture frame (we configured it as BGR888)
                 frame = self.cap.capture_array()
                 
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
-                self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
+                
+                # --- FIX: Tell Qt that the data is Format_BGR888 ---
+                # This aligns the BGR camera data with the BGR display format.
+                self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_BGR888)
+                
                 pix = QPixmap.fromImage(self.qt_img)
                 self.cameraLabel.setPixmap(pix)
             except Exception as e:
@@ -256,8 +261,9 @@ class cameraFrame(QMainWindow):
         if self.cap is None:
             self.cap = Picamera2()
             
+            # --- FIX: Explicitly request BGR888 ---
             config = self.cap.create_video_configuration(
-                main={"size": (640, 480), "format": "RGB888"}
+                main={"size": (640, 480), "format": "BGR888"}
             )
             self.cap.configure(config)
             self.cap.start()
