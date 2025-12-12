@@ -23,7 +23,6 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 directory = resource_path("images")
-#directory = "./images/"
 os.makedirs(directory, exist_ok=True)
 
 class cameraFrame(QMainWindow):
@@ -67,7 +66,6 @@ class cameraFrame(QMainWindow):
         self.verticalLayout.addItem(spacerItem1)
 
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
-        #self.frame.setMaximumSize(QtCore.QSize(800, 480))
         self.frame.setStyleSheet("QFrame#frame {\n"
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
@@ -241,13 +239,10 @@ class cameraFrame(QMainWindow):
         self.timer.timeout.connect(self.update_frame)
         self.timer.start(30)
     
-    #Picamera2 capture_array() ---
     def update_frame(self):
         if not self.captured and self.isDisplayed and self.cap != None:
             try:
                 frame = self.cap.capture_array()
-                
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
@@ -260,9 +255,9 @@ class cameraFrame(QMainWindow):
     def showEvent(self, event):
         if self.cap is None:
             self.cap = Picamera2()
-            # Configure for 640x480 BGR (OpenCV compatible)
+            
             config = self.cap.create_video_configuration(
-                main={"size": (640, 480), "format": "BGR888"}
+                main={"size": (640, 480), "format": "RGB888"}
             )
             self.cap.configure(config)
             self.cap.start()
