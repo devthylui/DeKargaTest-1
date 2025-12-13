@@ -80,6 +80,7 @@ class viewFrame(QMainWindow):
             "    padding: 8px; \n"
             "}")        
         self.cameraLabel.setObjectName("cameraLabel")
+        self.cameraLabel.setMinimumSize(QtCore.QSize(437, 319))
 
         self.panel1.addWidget(self.cameraLabel)
         self.panelLayout.addLayout(self.panel1)
@@ -94,7 +95,7 @@ class viewFrame(QMainWindow):
             "    padding: 5px;\n"
             "    color: black;\n"
             "    font: ;\n"
-            "    font: 400 8pt \"Segoe UI\";\n"
+            "    font: 400 7pt \"Segoe UI\";\n"
             "}")        
         self.analysisLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.analysisLabel.setObjectName("analysisLabel")
@@ -134,10 +135,10 @@ class viewFrame(QMainWindow):
         self.panel2.addLayout(self.resultsVLayout)   
  
         self.panel2.setStretch(0, 0)
-        self.panel2.setStretch(1, 1) 
+        self.panel2.setStretch(1, 1)
         self.panelLayout.addLayout(self.panel2)
         
-        self.panelLayout.setStretch(0, 1)
+        self.panelLayout.setStretch(0, 3)
         self.panelLayout.setStretch(1, 1)
         self.centerLayout.addLayout(self.panelLayout)
 
@@ -234,14 +235,13 @@ class viewFrame(QMainWindow):
         out_pix = QPixmap(qt_img)
 
         # Image Size
-        text = "Image Size:" + "\t\t\t" + "(" + str(out_pix.width()) + ", " + str(out_pix.height()) + ")\n"
+        text = "Image Size:" + "\t\t" + "(" + str(out_pix.width()) + ", " + str(out_pix.height()) + ")\n"
         # Image Date
-        text += "Capture Date & Time:" + "\t\t" + timestamp.strftime('%B %d %Y - %I:%M %p') + "\n"
+        text += "Capture Date & Time:" + "\t" + timestamp.strftime('%B %d %Y - %I:%M %p') + "\n"
         self.analysisLabel.setText(text)
 
         self.clearLayout(self.objectsLayout)
         if len(results[0][0]["boxes"].tolist()) == 0:
-            out_pix = QPixmap.fromImage(qt_img)
             scaled_pix = out_pix.scaled(
                 self.cameraLabel.size(),
                 Qt.AspectRatioMode.KeepAspectRatio,
@@ -266,12 +266,12 @@ class viewFrame(QMainWindow):
 
         class_colors = [
             QColor(255, 0, 0),    # Red
-            QColor(0, 255, 0),    # Green
+            QColor(255, 0, 255),  # Magenta
             QColor(0, 0, 255),    # Blue
             QColor(255, 255, 0),  # Yellow
-            QColor(255, 0, 255),  # Magenta
+            QColor(255, 128, 0),  # Orange 
+            QColor(0, 255, 0),    # Green            
             QColor(0, 255, 255),  # Cyan
-            QColor(255, 128, 0),  # Orange
         ]
 
         painter = QPainter(out_pix)
@@ -327,7 +327,7 @@ class viewFrame(QMainWindow):
 
                 #confidence score progress bar
                 self.objectConf = QtWidgets.QProgressBar(parent=self.centerFrame)
-                self.objectConf.setFixedWidth(150)
+                self.objectConf.setFixedWidth(80)
                 self.objectConf.setStyleSheet("QProgressBar#objectConf {\n"
                     "    text-align: center; \n"
                     "    background: white; \n"
@@ -373,7 +373,7 @@ class viewFrame(QMainWindow):
         self.objectsLayout.addItem(spacerItem7)
 
         # Detection Count
-        text += "Objects Detected:" + "\t\t" + str(num)
+        text += "Objects Detected:" + "\t" + str(num)
         self.analysisLabel.setText(text)
 
         #FINAL RESULT CSS
