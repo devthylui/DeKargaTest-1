@@ -139,28 +139,20 @@ class filesFrame(QMainWindow):
         self.horizontalLayout.setObjectName("horizontalLayout")
 
         self.mainHLayout = QtWidgets.QHBoxLayout()
-        #self.mainHLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetFixedSize)
+
         self.mainHLayout.setContentsMargins(-1, -1, -1, 0)
         self.mainHLayout.setSpacing(6)
         self.mainHLayout.setObjectName("mainHLayout")
 
-        #spacerItem = QtWidgets.QSpacerItem(214, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        #self.mainHLayout.addItem(spacerItem)
-
         self.mainVLayout = QtWidgets.QVBoxLayout()
         self.mainVLayout.setObjectName("mainVLayout")
 
-        #spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        #self.mainVLayout.addItem(spacerItem1)
-
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
-        #self.frame.setMinimumSize(QtCore.QSize(800, 480))
-        self.frame.setMaximumSize(QtCore.QSize(800, 480))
         self.frame.setStyleSheet("QFrame#frame {\n"
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
             "    border-radius: 5px; \n"
-            "    padding: 20px; \n"
+            "    padding: 5px; \n"
             "}")
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -312,8 +304,8 @@ class filesFrame(QMainWindow):
             "QPushButton:pressed {\n"
             "    background-color: #EEEEEE; /\n"
             "    border: 1px solid rgb(55, 65, 81);\n"
-            "    padding-top: 11px;\n"
-            "    padding-bottom: 9px;\n"
+            "    padding-top: 9px;\n"
+            "    padding-bottom: 7px;\n"
             "}")          
         self.backButton.setObjectName("backButton")
 
