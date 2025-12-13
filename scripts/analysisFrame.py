@@ -273,7 +273,7 @@ class analysisFrame(QMainWindow):
             "    padding: 5px;\n"
             "    color: black;\n"
             "    font: ;\n"
-            "    font: 400 8pt \"Segoe UI\";\n"
+            "    font: 400 9pt \"Segoe UI\";\n"
             "}")
         self.analysisLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.analysisLabel.setObjectName("analysisLabel")
@@ -520,7 +520,7 @@ class analysisFrame(QMainWindow):
         self.confidenceTitleLabel.setText(self.tr("Confidence Level:")) 
         self.confidenceTitleLabel.setStyleSheet("QLabel#confidenceTitleLabel {\n"
             "    color: rgb(55, 65, 81); \n"
-            "    font: 600 10pt \"Bahnschrift\"; color: rgb(55, 65, 81); \n" 
+            "    font: 600 11pt \"Bahnschrift\"; color: rgb(55, 65, 81); \n" 
             "}\n")
         
         self.objectsLayout.addWidget(self.confidenceTitleLabel)
@@ -578,7 +578,7 @@ class analysisFrame(QMainWindow):
                 self.objectLabel.setStyleSheet("QLabel#objectLabel {\n"
                     "    color: rgb(55, 65, 81);\n"
                     "    background-color: white; \n"
-                    "    font: 600 8pt \"Segoe UI\";\n"
+                    "    font: 600 9pt \"Segoe UI\";\n"
                     "    margin-top: 10px; \n"
                     "}\n")                
 
@@ -588,7 +588,7 @@ class analysisFrame(QMainWindow):
 
                 #confidence score progress bar
                 self.objectConf = QtWidgets.QProgressBar(parent=self.centerFrame)
-                self.objectConf.setFixedWidth(80)
+                self.objectConf.setFixedWidth(130)
                 self.objectConf.setStyleSheet("QProgressBar#objectConf {\n"
                     "    text-align: center; \n"
                     "    background: white; \n"
@@ -620,7 +620,7 @@ class analysisFrame(QMainWindow):
                 self.percentLabel.setStyleSheet("QLabel#percentLabel {\n"
                     "    color: #0284c7;\n"
                     "    background-color: white; \n"
-                    "    font: 600 8pt \"Bahnschrift\";\n"
+                    "    font: 600 9pt \"Bahnschrift\";\n"
                     "    margin-left: 10px; \n"
                     "    margin-top: 10px; \n"
                     "}\n")
@@ -638,9 +638,9 @@ class analysisFrame(QMainWindow):
         self.analysisLabel.setText(text)
 
         #FINAL RESULT CSS
-        SAFE_COLOR = "color: #059669; font: 800 12pt \"Bahnschrift\";"
-        UNSAFE_COLOR = "color: #dc2626; font: 800 12pt \"Bahnschrift\";"
-        REGULAR_FONT = "font: 600 10pt \"Bahnschrift\"; color: rgb(55, 65, 81);"
+        SAFE_COLOR = "color: #059669; font: 800 14pt \"Bahnschrift\";"
+        UNSAFE_COLOR = "color: #dc2626; font: 800 14pt \"Bahnschrift\";"
+        REGULAR_FONT = "font: 600 11pt \"Bahnschrift\"; color: rgb(55, 65, 81);"
         
         self.clearLayout(self.resultLayoutH)
         
