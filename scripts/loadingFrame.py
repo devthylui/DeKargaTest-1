@@ -26,35 +26,20 @@ class loadingFrame(QMainWindow):
     def __init__(self, switch_callback=None):
         super().__init__()
 
-        pix = QPixmap(resource_path("resources/Logo.png"))
-
         self.setObjectName("mainFrame")
         self.resize(800, 480)
-        
         self.setWindowOpacity(0.9) 
         
         self.centralwidget = QtWidgets.QWidget(parent=self)
         self.centralwidget.setStyleSheet("background-color: white;")        
         self.centralwidget.setObjectName("centralwidget")
 
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.mainLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.mainLayout.setContentsMargins(0, 0, 0, 0)
+        self.mainLayout.setObjectName("mainLayout")
 
-        self.centerLayoutH = QtWidgets.QHBoxLayout()
-        self.centerLayoutH.setObjectName("centerLayoutH")
-
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.centerLayoutH.addItem(spacerItem)
-
-        self.centerLayoutV = QtWidgets.QVBoxLayout()
-        self.centerLayoutV.setObjectName("centerLayoutV")
-
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.centerLayoutV.addItem(spacerItem1)
 
         self.centerFrame = QtWidgets.QFrame(parent=self.centralwidget)
-        #self.centerFrame.setMinimumSize(QtCore.QSize(800, 480))
-        self.centerFrame.setMaximumSize(QtCore.QSize(800, 480))    
         self.centerFrame.setStyleSheet("QFrame#centerFrame {\n"
             "   background-image: url('./resources/Transparent Truck Cartoon.png');\n"
             "   background-position: left;\n"
@@ -67,6 +52,8 @@ class loadingFrame(QMainWindow):
         self.centerFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.centerFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.centerFrame.setObjectName("centerFrame")
+
+        self.mainLayout.addWidget(self.centerFrame)
 
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centerFrame)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -83,7 +70,6 @@ class loadingFrame(QMainWindow):
         self.logoLabel.setText("DIEGA - TAPPA")
         self.loadingLayout.addWidget(self.logoLabel)
 
-        # Main Title Label
         self.label = QtWidgets.QLabel(parent=self.centerFrame)
         self.label.setStyleSheet("font: 800 30pt \"Segoe UI\"; color: rgb(55, 65, 81); background-color: transparent;")
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -97,7 +83,6 @@ class loadingFrame(QMainWindow):
         self.statusLabel.setText("Initializing application...")
         self.loadingLayout.addWidget(self.statusLabel)
 
-        # Spacer
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.loadingLayout.addItem(spacerItem3)
 
@@ -108,23 +93,6 @@ class loadingFrame(QMainWindow):
         self.loadingLayout.addWidget(self.versionLabel)
         
         self.verticalLayout.addLayout(self.loadingLayout)
-        self.centerLayoutV.addWidget(self.centerFrame)
-
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.centerLayoutV.addItem(spacerItem4)
-
-        self.centerLayoutV.setStretch(0, 1)
-        self.centerLayoutV.setStretch(1, 3)
-        self.centerLayoutV.setStretch(2, 1)
-        self.centerLayoutH.addLayout(self.centerLayoutV)
-
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.centerLayoutH.addItem(spacerItem5)
-
-        self.centerLayoutH.setStretch(0, 1)
-        self.centerLayoutH.setStretch(1, 3)
-        self.centerLayoutH.setStretch(2, 1)
-        self.horizontalLayout.addLayout(self.centerLayoutH)
         self.setCentralWidget(self.centralwidget)
 
         self.menubar = QtWidgets.QMenuBar(parent=self)
