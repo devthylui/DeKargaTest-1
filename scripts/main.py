@@ -1,9 +1,9 @@
-from .mainFrame import mainFrame
-from .cameraFrame import cameraFrame
-from .analysisFrame import analysisFrame
-from .filesFrame import filesFrame
-from .loadingFrame import loadingFrame
-from .viewFrame import viewFrame
+from mainFrame import mainFrame
+from cameraFrame import cameraFrame
+from analysisFrame import analysisFrame
+from filesFrame import filesFrame
+from loadingFrame import loadingFrame
+from viewFrame import viewFrame
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 
