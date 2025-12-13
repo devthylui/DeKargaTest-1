@@ -220,9 +220,6 @@ class analysisFrame(QMainWindow):
         self.centerLayoutH.setSpacing(6)
         self.centerLayoutH.setObjectName("centerLayoutH")
 
-        spacerItem = QtWidgets.QSpacerItem(214, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.centerLayoutH.addItem(spacerItem)
-
         self.centerLayoutV = QtWidgets.QVBoxLayout()
         self.centerLayoutV.setObjectName("centerLayoutV")
 
@@ -235,7 +232,7 @@ class analysisFrame(QMainWindow):
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
             "    border-radius: 8px; \n"
-            "    padding: 20px; \n"
+            "    padding: 5px; \n"
             "}")
 
         self.centerFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -261,7 +258,7 @@ class analysisFrame(QMainWindow):
             "    padding: 8px; \n"
             "}")
         self.cameraLabel.setObjectName("cameraLabel")
-        self.cameraLabel.setMinimumSize(QtCore.QSize(437, 319))
+        self.cameraLabel.setMinimumSize(QtCore.QSize(402,288))
 
         self.panel1.addWidget(self.cameraLabel)
         self.panelLayout.addLayout(self.panel1)
@@ -276,7 +273,7 @@ class analysisFrame(QMainWindow):
             "    padding: 5px;\n"
             "    color: black;\n"
             "    font: ;\n"
-            "    font: 400 7pt \"Segoe UI\";\n"
+            "    font: 400 8pt \"Segoe UI\";\n"
             "}")
         self.analysisLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.analysisLabel.setObjectName("analysisLabel")
@@ -405,13 +402,6 @@ class analysisFrame(QMainWindow):
         self.centerLayoutV.setStretch(1, 6)
         self.centerLayoutV.setStretch(2, 1)
         self.centerLayoutH.addLayout(self.centerLayoutV)
-
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.centerLayoutH.addItem(spacerItem6)
-
-        self.centerLayoutH.setStretch(0, 1)
-        self.centerLayoutH.setStretch(1, 7)
-        self.centerLayoutH.setStretch(2, 1)
 
         self.verticalLayout_2.addLayout(self.centerLayoutH)
         self.verticalLayout_2.setStretch(0, 1)
@@ -589,7 +579,7 @@ class analysisFrame(QMainWindow):
                     "    color: rgb(55, 65, 81);\n"
                     "    background-color: white; \n"
                     "    font: 600 8pt \"Segoe UI\";\n"
-                    "    margin-top: 5px; \n"
+                    "    margin-top: 10px; \n"
                     "}\n")                
 
                 self.objectLabel.setObjectName("objectLabel")
@@ -607,7 +597,7 @@ class analysisFrame(QMainWindow):
                     "    border-radius: 6px;\n"
                     "    height: 12px;\n"
                     "    margin-left: 2px; \n"                    
-                    "    margin-top: 5px; \n"
+                    "    margin-top: 10px; \n"
                     "}\n"
                     "\n"
                     "QProgressBar#objectConf::chunk {\n"
@@ -632,7 +622,7 @@ class analysisFrame(QMainWindow):
                     "    background-color: white; \n"
                     "    font: 600 8pt \"Bahnschrift\";\n"
                     "    margin-left: 10px; \n"
-                    "    margin-top: 5px; \n"
+                    "    margin-top: 10px; \n"
                     "}\n")
                 self.percentLabel.setObjectName("percentLabel")
                 self.percentLabel.setText(f"{int(conf*100.00)}%")
