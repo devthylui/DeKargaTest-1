@@ -318,7 +318,7 @@ class viewFrame(QMainWindow):
                     "    color: rgb(55, 65, 81);\n"
                     "    background-color: white; \n"
                     "    font: 600 8pt \"Segoe UI\";\n"
-                    "    margin-top: 15px; \n"
+                    "    margin-top: 5px; \n"
                     "}\n")                
 
                 self.objectLabel.setObjectName("objectLabel")
@@ -333,16 +333,16 @@ class viewFrame(QMainWindow):
                     "    background: white; \n"
                     "    color: white; \n"
                     "    border: 1px solid #9ca3af;\n"
-                    "    border-radius: 10px;\n"
-                    "    height: 20px;\n"
-                    "    margin-left: 5px; \n"                    
-                    "    margin-top: 15px; \n"
+                    "    border-radius: 6px;\n"
+                    "    height: 12px;\n"
+                    "    margin-left: 2px; \n"                    
+                    "    margin-top: 5px; \n"
                     "}\n"
                     "\n"
                     "QProgressBar#objectConf::chunk {\n"
                     "    background-color: #bae6fd; \n"
                     "    border: 1px solid #0284c7;\n"
-                    "    border-radius: 10px; \n"                
+                    "    border-radius: 6px; \n"                
                     "}\n"
                     )                
                 self.objectConf.setProperty("value", int(conf*100.0))
@@ -361,7 +361,7 @@ class viewFrame(QMainWindow):
                     "    background-color: white; \n"
                     "    font: 600 8pt \"Bahnschrift\";\n"
                     "    margin-left: 10px; \n"
-                    "    margin-top: 15px; \n"
+                    "    margin-top: 5px; \n"
                     "}\n")
                 self.percentLabel.setObjectName("percentLabel")
                 self.percentLabel.setText(f"{int(conf*100.00)}%")
@@ -397,7 +397,7 @@ class viewFrame(QMainWindow):
         """)
 
         status_vlayout = QtWidgets.QVBoxLayout(status_container)
-        status_vlayout.setSpacing(10)
+        status_vlayout.setSpacing(3)
         
         result_prefix_label = QtWidgets.QLabel() 
         result_prefix_label.setText("Result:")
