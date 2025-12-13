@@ -333,9 +333,9 @@ class filesFrame(QMainWindow):
         spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.mainVLayout.addItem(spacerItem4)
 
-        self.mainVLayout.setStretch(0, 1)
-        self.mainVLayout.setStretch(1, 6)
-        self.mainVLayout.setStretch(2, 1)
+        #self.mainVLayout.setStretch(0, 1)
+        #self.mainVLayout.setStretch(1, 6)
+        #self.mainVLayout.setStretch(2, 1)
         self.mainHLayout.addLayout(self.mainVLayout)
 
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
