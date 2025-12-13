@@ -139,7 +139,7 @@ class filesFrame(QMainWindow):
         self.horizontalLayout.setObjectName("horizontalLayout")
 
         self.mainHLayout = QtWidgets.QHBoxLayout()
-        self.mainHLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetFixedSize)
+        #self.mainHLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetFixedSize)
         self.mainHLayout.setContentsMargins(-1, -1, -1, 0)
         self.mainHLayout.setSpacing(6)
         self.mainHLayout.setObjectName("mainHLayout")
