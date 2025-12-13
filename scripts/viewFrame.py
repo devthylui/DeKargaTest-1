@@ -54,7 +54,7 @@ class viewFrame(QMainWindow):
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
             "    border-radius: 8px; \n"
-            "    padding: 20px; \n"
+            "    padding: 5px; \n"
             "}")
 
         self.centerFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -95,7 +95,7 @@ class viewFrame(QMainWindow):
             "    padding: 5px;\n"
             "    color: black;\n"
             "    font: ;\n"
-            "    font: 400 7pt \"Segoe UI\";\n"
+            "    font: 400 8pt \"Segoe UI\";\n"
             "}")        
         self.analysisLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.analysisLabel.setObjectName("analysisLabel")
