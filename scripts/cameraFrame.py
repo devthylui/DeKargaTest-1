@@ -71,7 +71,7 @@ class cameraFrame(QMainWindow):
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
             "    border-radius: 5px; \n"
-            "    padding: 20px; \n"
+            "    padding: 5px; \n"
             "}")
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -103,7 +103,7 @@ class cameraFrame(QMainWindow):
 
         self.cameraLabel = QtWidgets.QLabel(parent=self.frame)
         self.cameraLabel.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
-        self.cameraLabel.setMinimumSize(QtCore.QSize(437, 319))
+        self.cameraLabel.setMinimumSize(QtCore.QSize(415, 303))
         self.cameraLabel.setText("")
         self.cameraLabel.setObjectName("cameraLabel")
         self.cameraLabel.setStyleSheet("QFrame#cameraLabel {\n"
