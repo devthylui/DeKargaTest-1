@@ -66,7 +66,7 @@ class cameraFrame(QMainWindow):
         self.verticalLayout.addItem(spacerItem1)
 
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
-        self.frame.setMaximumSize(QtCore.QSize(800, 480))        
+        #self.frame.setMaximumSize(QtCore.QSize(800, 480))        
         self.frame.setStyleSheet("QFrame#frame {\n"
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
@@ -103,6 +103,7 @@ class cameraFrame(QMainWindow):
 
         self.cameraLabel = QtWidgets.QLabel(parent=self.frame)
         self.cameraLabel.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        self.cameraLabel.setMinimumSize(QtCore.QSize(437, 319))
         self.cameraLabel.setText("")
         self.cameraLabel.setObjectName("cameraLabel")
         self.cameraLabel.setStyleSheet("QFrame#cameraLabel {\n"
