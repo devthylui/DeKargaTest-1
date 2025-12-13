@@ -39,8 +39,8 @@ class viewFrame(QMainWindow):
         self.centerLayoutH.setSpacing(6)
         self.centerLayoutH.setObjectName("centerLayoutH")
 
-        spacerItem = QtWidgets.QSpacerItem(214, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.centerLayoutH.addItem(spacerItem)
+        #spacerItem = QtWidgets.QSpacerItem(214, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        #self.centerLayoutH.addItem(spacerItem)
 
         self.centerLayoutV = QtWidgets.QVBoxLayout()
         self.centerLayoutV.setObjectName("centerLayoutV")
@@ -80,7 +80,7 @@ class viewFrame(QMainWindow):
             "    padding: 8px; \n"
             "}")        
         self.cameraLabel.setObjectName("cameraLabel")
-        self.cameraLabel.setMinimumSize(QtCore.QSize(437, 319))
+        self.cameraLabel.setMinimumSize(QtCore.QSize(402,288))
 
         self.panel1.addWidget(self.cameraLabel)
         self.panelLayout.addLayout(self.panel1)
@@ -138,7 +138,7 @@ class viewFrame(QMainWindow):
         self.panel2.setStretch(1, 1)
         self.panelLayout.addLayout(self.panel2)
         
-        self.panelLayout.setStretch(0, 3)
+        self.panelLayout.setStretch(0, 1)
         self.panelLayout.setStretch(1, 1)
         self.centerLayout.addLayout(self.panelLayout)
 
@@ -170,8 +170,8 @@ class viewFrame(QMainWindow):
             "QPushButton:pressed {\n"
             "    background-color: #EEEEEE; /\n"
             "    border: 1px solid rgb(55, 65, 81);\n"
-            "    padding-top: 11px;\n"
-            "    padding-bottom: 9px;\n"
+            "    padding-top: 9px;\n"
+            "    padding-bottom: 7px;\n"
             "}")                
         self.backButton.setObjectName("backButton")
         self.buttonsLayout.addWidget(self.backButton)
@@ -196,13 +196,6 @@ class viewFrame(QMainWindow):
         self.centerLayoutV.setStretch(1, 6)
         self.centerLayoutV.setStretch(2, 1)
         self.centerLayoutH.addLayout(self.centerLayoutV)
-
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.centerLayoutH.addItem(spacerItem6)
-
-        self.centerLayoutH.setStretch(0, 1)
-        self.centerLayoutH.setStretch(1, 7)
-        self.centerLayoutH.setStretch(2, 1)
 
         self.verticalLayout_2.addLayout(self.centerLayoutH)
         self.verticalLayout_2.setStretch(0, 1)
@@ -318,7 +311,7 @@ class viewFrame(QMainWindow):
                     "    color: rgb(55, 65, 81);\n"
                     "    background-color: white; \n"
                     "    font: 600 8pt \"Segoe UI\";\n"
-                    "    margin-top: 5px; \n"
+                    "    margin-top: 10px; \n"
                     "}\n")                
 
                 self.objectLabel.setObjectName("objectLabel")
@@ -336,7 +329,7 @@ class viewFrame(QMainWindow):
                     "    border-radius: 6px;\n"
                     "    height: 12px;\n"
                     "    margin-left: 2px; \n"                    
-                    "    margin-top: 5px; \n"
+                    "    margin-top: 10px; \n"
                     "}\n"
                     "\n"
                     "QProgressBar#objectConf::chunk {\n"
@@ -361,7 +354,7 @@ class viewFrame(QMainWindow):
                     "    background-color: white; \n"
                     "    font: 600 8pt \"Bahnschrift\";\n"
                     "    margin-left: 10px; \n"
-                    "    margin-top: 5px; \n"
+                    "    margin-top: 10px; \n"
                     "}\n")
                 self.percentLabel.setObjectName("percentLabel")
                 self.percentLabel.setText(f"{int(conf*100.00)}%")
@@ -424,6 +417,8 @@ class viewFrame(QMainWindow):
         #
 
         painter.end()
+
+        #print(f"DEBUG: Camera Label Size is: {self.cameraLabel.width()} x {self.cameraLabel.height()}")
 
         scaled_pix = out_pix.scaled(
             self.cameraLabel.size(),
