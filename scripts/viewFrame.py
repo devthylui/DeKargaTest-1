@@ -49,7 +49,7 @@ class viewFrame(QMainWindow):
         self.centerLayoutV.addItem(spacerItem1)
 
         self.centerFrame = QtWidgets.QFrame(parent=self.centralwidget)
-        self.centerFrame.setMaximumSize(QtCore.QSize(800, 480))
+        #self.centerFrame.setMaximumSize(QtCore.QSize(800, 480))
         self.centerFrame.setStyleSheet("QFrame#centerFrame {\n"
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
@@ -259,7 +259,7 @@ class viewFrame(QMainWindow):
         self.confidenceTitleLabel.setText(self.tr("Confidence Score:")) 
         self.confidenceTitleLabel.setStyleSheet("QLabel#confidenceTitleLabel {\n"
             "    color: rgb(55, 65, 81); \n"
-            "    font: 600 12pt \"Bahnschrift\"; color: rgb(55, 65, 81); \n" 
+            "    font: 600 10pt \"Bahnschrift\"; color: rgb(55, 65, 81); \n" 
             "}\n")
         
         self.objectsLayout.addWidget(self.confidenceTitleLabel)
@@ -377,9 +377,9 @@ class viewFrame(QMainWindow):
         self.analysisLabel.setText(text)
 
         #FINAL RESULT CSS
-        SAFE_COLOR = "color: #059669; font: 800 18pt \"Bahnschrift\";"
-        UNSAFE_COLOR = "color: #dc2626; font: 800 18pt \"Bahnschrift\";"
-        REGULAR_FONT = "font: 600 12pt \"Bahnschrift\"; color: rgb(55, 65, 81);"
+        SAFE_COLOR = "color: #059669; font: 800 14pt \"Bahnschrift\";"
+        UNSAFE_COLOR = "color: #dc2626; font: 800 14pt \"Bahnschrift\";"
+        REGULAR_FONT = "font: 600 10pt \"Bahnschrift\"; color: rgb(55, 65, 81);"
         
         self.clearLayout(self.resultLayoutH)
         
