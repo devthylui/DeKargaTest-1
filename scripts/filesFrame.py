@@ -144,14 +144,14 @@ class filesFrame(QMainWindow):
         self.mainHLayout.setSpacing(6)
         self.mainHLayout.setObjectName("mainHLayout")
 
-        spacerItem = QtWidgets.QSpacerItem(214, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.mainHLayout.addItem(spacerItem)
+        #spacerItem = QtWidgets.QSpacerItem(214, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        #self.mainHLayout.addItem(spacerItem)
 
         self.mainVLayout = QtWidgets.QVBoxLayout()
         self.mainVLayout.setObjectName("mainVLayout")
 
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.mainVLayout.addItem(spacerItem1)
+        #spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        #self.mainVLayout.addItem(spacerItem1)
 
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
         #self.frame.setMinimumSize(QtCore.QSize(800, 480))
@@ -330,16 +330,16 @@ class filesFrame(QMainWindow):
         self.verticalLayout_4.addLayout(self.frameLayout)
         self.mainVLayout.addWidget(self.frame)
 
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.mainVLayout.addItem(spacerItem4)
+        #spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        #self.mainVLayout.addItem(spacerItem4)
 
         #self.mainVLayout.setStretch(0, 1)
         #self.mainVLayout.setStretch(1, 6)
         #self.mainVLayout.setStretch(2, 1)
         self.mainHLayout.addLayout(self.mainVLayout)
 
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.mainHLayout.addItem(spacerItem5)
+        #spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        #self.mainHLayout.addItem(spacerItem5)
 
         self.mainHLayout.setStretch(0, 1)
         self.mainHLayout.setStretch(1, 3)
