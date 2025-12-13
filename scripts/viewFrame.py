@@ -377,8 +377,8 @@ class viewFrame(QMainWindow):
         self.analysisLabel.setText(text)
 
         #FINAL RESULT CSS
-        SAFE_COLOR = "color: #059669; font: 800 14pt \"Bahnschrift\";"
-        UNSAFE_COLOR = "color: #dc2626; font: 800 14pt \"Bahnschrift\";"
+        SAFE_COLOR = "color: #059669; font: 800 12pt \"Bahnschrift\";"
+        UNSAFE_COLOR = "color: #dc2626; font: 800 12pt \"Bahnschrift\";"
         REGULAR_FONT = "font: 600 10pt \"Bahnschrift\"; color: rgb(55, 65, 81);"
         
         self.clearLayout(self.resultLayoutH)
