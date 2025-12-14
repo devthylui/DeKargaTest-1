@@ -267,9 +267,8 @@ class cameraFrame(QMainWindow):
         if self.cap is None:
             self.cap = Picamera2()
             
-            # 1. Configure as BGR888 (The standard)
             config = self.cap.create_video_configuration(
-                main={"size": (640, 480), "format": "BGR888"}
+                main={"size": (1440, 1080), "format": "BGR888"}
             )
             self.cap.configure(config)
             self.cap.start()
@@ -293,30 +292,20 @@ class cameraFrame(QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         match self.state:
             case 0:
-                self.cap.stop()
-
-                # 2. Switch to HIGH RES for the photo
-                config = self.cap.create_video_configuration(
-                    main={"size": (1440, 1080), "format": "BGR888"}
-                )
-                self.cap.configure(config)
-                self.cap.start()
-
-                self.cap.capture_array() 
                 frame = self.cap.capture_array()
                 
                 self.cap.stop()
 
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
-
+                
                 self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888).copy()
 
                 pix = QPixmap.fromImage(self.qt_img)
                 scaled_pix = pix.scaled(
                     self.cameraLabel.size(),
-                    Qt.AspectRatioMode.KeepAspectRatio,
-                    Qt.TransformationMode.SmoothTransformation
+                    QtCore.Qt.AspectRatioMode.KeepAspectRatio,
+                    QtCore.Qt.TransformationMode.SmoothTransformation
                 )
                 self.cameraLabel.setPixmap(scaled_pix)
 
@@ -347,16 +336,8 @@ class cameraFrame(QMainWindow):
                     self.cap.close()
                     self.cap = None
                 switch_callback("main")
-
             case 1:
                 self.captured = False
                 self.state = 0
-                
-                config = self.cap.create_video_configuration(
-                    main={"size": (640, 480), "format": "BGR888"}
-                )
-                self.cap.configure(config)
-                self.cap.start()
-
                 self.pushButton_2.setText(_translate("self", "Capture"))
                 self.pushButton.setText(_translate("self", "Back"))
