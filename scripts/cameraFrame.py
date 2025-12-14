@@ -10,7 +10,7 @@ import cv2
 from datetime import datetime
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtWidgets import QMainWindow
-from PyQt6.QtCore import QTimer
+from PyQt6.QtCore import QTimer, Qt
 from PyQt6.QtGui import QPixmap, QImage
 
 from picamera2 import Picamera2
