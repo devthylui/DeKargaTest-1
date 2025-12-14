@@ -268,8 +268,10 @@ class viewFrame(QMainWindow):
         ]
 
         painter = QPainter(out_pix)
+
         font = QFont()
-        font.setPointSize(10)
+        font.setPointSize(22)
+        font.setBold(True)
         painter.setFont(font)
 
         # Results
@@ -290,14 +292,15 @@ class viewFrame(QMainWindow):
                 x1, y1, x2, y2 = box
                 color = class_colors[cls % len(class_colors)]
                 pen = QPen(color)
-                pen.setWidth(2)
+                pen.setWidth(5)
                 painter.setPen(pen)
                 painter.drawRect(int(x1), int(y1), int(x2 - x1), int(y2 - y1))
 
                 painter.setPen(color)
                 name = names[cls] + ((" " + str(names_count[names[cls]])) if names_num[names[cls]] > 1 else "")
                 names_count[names[cls]] += 1
-                painter.drawText(int(x1), int(y1) - 5, name)
+
+                painter.drawText(int(x1), int(y1) - 15, name)              
 
                 conds[0] = 1 if names[cls] == "sugarcane-carrying-truck" else conds[0]
                 conds[1] = 1 if names[cls] == "overhanging-load" else conds[1]
