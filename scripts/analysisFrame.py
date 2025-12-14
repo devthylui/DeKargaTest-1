@@ -537,8 +537,6 @@ class analysisFrame(QMainWindow):
 
         painter = QPainter(out_pix)
 
-        #scale_factor = out_pix.width() / 640.0
-
         font = QFont()
         font.setPointSize(22)
         font.setBold(True)
@@ -570,7 +568,6 @@ class analysisFrame(QMainWindow):
                 name = names[cls] + ((" " + str(names_count[names[cls]])) if names_num[names[cls]] > 1 else "")
                 names_count[names[cls]] += 1
 
-                #offset = int(5 * scale_factor) + 5
                 painter.drawText(int(x1), int(y1) - 15, name)
 
                 conds[0] = 1 if names[cls] == "sugarcane-carrying-truck" else conds[0]
