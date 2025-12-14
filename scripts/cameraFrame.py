@@ -269,7 +269,7 @@ class cameraFrame(QMainWindow):
             
             # 1. Configure as BGR888 (The standard)
             config = self.cap.create_video_configuration(
-                main={"size": (640, 480), "format": "BGR888"}
+                main={"size": (1920, 1080), "format": "BGR888"}
             )
             self.cap.configure(config)
             self.cap.start()
