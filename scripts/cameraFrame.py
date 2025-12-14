@@ -314,8 +314,8 @@ class cameraFrame(QMainWindow):
                 pix = QPixmap.fromImage(self.qt_img)
                 scaled_pix = pix.scaled(
                     self.cameraLabel.size(),
-                    QtCore.Qt.AspectRatioMode.KeepAspectRatio,
-                    QtCore.Qt.TransformationMode.SmoothTransformation
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
                 )
                 self.cameraLabel.setPixmap(scaled_pix)
 
