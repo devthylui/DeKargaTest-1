@@ -309,7 +309,8 @@ class cameraFrame(QMainWindow):
 
                 h, w, ch = frame.shape
                 bytes_per_line = ch * w
-                self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
+
+                self.qt_img = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888).copy()
 
                 pix = QPixmap.fromImage(self.qt_img)
                 scaled_pix = pix.scaled(
