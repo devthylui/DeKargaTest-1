@@ -337,6 +337,9 @@ class cameraFrame(QMainWindow):
                     self.cap = None
                 switch_callback("main")
             case 1:
+                if self.cap is not None:
+                    self.cap.start()         
+                       
                 self.captured = False
                 self.state = 0
                 self.pushButton_2.setText(_translate("self", "Capture"))
