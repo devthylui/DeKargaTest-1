@@ -14,7 +14,7 @@ MarkupSafe
 matplotlib
 mpmath
 networkx
-numpy
+numpy==1.26.4
 packaging
 pillow
 psutil
@@ -31,3 +31,4 @@ torchvision
 typing_extensions
 ultralytics
 urllib3
+
