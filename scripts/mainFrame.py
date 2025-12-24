@@ -38,7 +38,11 @@ class mainFrame(QMainWindow):
         self.setSizePolicy(sizePolicy)
 
         self.centralwidget = QtWidgets.QWidget(parent=self)
-        self.centralwidget.setStyleSheet("background-color: white;")
+        self.centralwidget.setStyleSheet(   
+            "#centralwidget {\n"
+            "   background-color: white;\n"
+            "}"                 
+        )
         self.centralwidget.setObjectName("centralwidget")
 
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -60,7 +64,7 @@ class mainFrame(QMainWindow):
         self.verticalLayout.addItem(spacerItem1)
 
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
-        self.frame.setMaximumSize(QtCore.QSize(800, 480))
+        self.frame.setMaximumSize(QtCore.QSize(600, 338))
         self.frame.setStyleSheet("QFrame#frame {\n"
             "    background-color: rgb(255, 255, 255); \n"
             "    border: 1px solid rgb(156, 163, 175); \n"
@@ -80,14 +84,20 @@ class mainFrame(QMainWindow):
         self.label.setStyleSheet("")
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
+        
         self.label.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, 
-                         QtWidgets.QSizePolicy.Policy.Expanding)
-        self.label.setScaledContents(True)
-        self.label.setMinimumSize(400, 100)
+                          QtWidgets.QSizePolicy.Policy.Expanding)
+
+        self.label.setScaledContents(False) 
+
+        target_w = 600
+        target_h = 300 
+        
         self.label.setPixmap(pix.scaled(
-            self.label.width(),
-            self.label.height(),
-            QtCore.Qt.AspectRatioMode.KeepAspectRatio
+            target_w,
+            target_h,
+            QtCore.Qt.AspectRatioMode.KeepAspectRatio,
+            QtCore.Qt.TransformationMode.SmoothTransformation
         ))
 
         self.verticalLayout_2.addWidget(self.label)
@@ -166,6 +176,7 @@ class mainFrame(QMainWindow):
         self.horizontalLayout_4.setStretch(2, 1)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
         self.verticalLayout.addWidget(self.frame)
 
@@ -197,6 +208,13 @@ class mainFrame(QMainWindow):
         self.pushButton.clicked.connect(lambda: switch_callback("files"))
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.setWindowTitle(_translate("mainFrame", "TruckCane AI"))
+        self.label.setText(_translate("mainFrame", ""))
+        self.pushButton_2.setText(_translate("mainFrame", "Open Camera"))
+        self.pushButton.setText(_translate("mainFrame", "Manage Files"))
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
