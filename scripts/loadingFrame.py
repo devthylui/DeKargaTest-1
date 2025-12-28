@@ -16,7 +16,7 @@ class loadingFrame(QMainWindow):
     def __init__(self, switch_callback=None):
         super().__init__()
 
-        pix = QPixmap(resource_path("resources/Logo 1.png"))
+        pix = QPixmap(resource_path("resources/LOGO.png"))
 
         self.setObjectName("mainFrame")
         self.resize(800, 480)
