@@ -32,7 +32,7 @@ class loadingFrame(QMainWindow):
 
         self.centerFrame = QtWidgets.QFrame(parent=self.centralwidget)
         self.centerFrame.setStyleSheet("QFrame#centerFrame {\n"
-            "   background-image: url('./resources/Transparent Truck Cartoon.png');\n"
+            "   background-image: url('./resources/Loading Screen BG.png');\n"
             "   background-position: left;\n"
             "   background-repeat: no-repeat;\n"
             "   background-color: white;\n"
@@ -60,17 +60,17 @@ class loadingFrame(QMainWindow):
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Maximum)
         
-        target_w, target_h = 550, 220
+        target_w, target_h = 550, 300
         self.label.setPixmap(pix.scaled(target_w, target_h, 
                                         QtCore.Qt.AspectRatioMode.KeepAspectRatio, 
                                         QtCore.Qt.TransformationMode.SmoothTransformation))
         self.loadingLayout.addWidget(self.label)
 
-        #DIEGA - TAPPA
+        #DIEGA & TAPPA
         self.logoLabel = QtWidgets.QLabel(parent=self.centerFrame)
         self.logoLabel.setStyleSheet("font: 800 11pt \"Bahnschrift\"; color: rgb(55, 65, 81); background-color: transparent;")
         self.logoLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.logoLabel.setText("DIEGA - TAPPA")
+        self.logoLabel.setText("DIEGA & TAPPA")
         self.logoLabel.setFixedHeight(20) 
         self.loadingLayout.addWidget(self.logoLabel)
 
@@ -104,7 +104,7 @@ class loadingFrame(QMainWindow):
             "Initializing Camera Module...",
             "Initializing Touch Display...",
             "Loading YOLOv11 Model...",
-            "Loading Graphic User Interface..."
+            "Loading GUI..."
         ]
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.fakeLoad(switch_callback))
