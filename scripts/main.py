@@ -7,11 +7,16 @@ from viewFrame import viewFrame
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 
+#SS
+from PyQt6.QtGui import QShortcut, QKeySequence 
+import datetime
+import os
+
 class App(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("TruckCane AI")
-        self.setFixedSize(800, 480)
+        self.setFixedSize(800, 416)
 
         self.stack = QStackedWidget()
         self.setCentralWidget(self.stack)
@@ -27,6 +32,20 @@ class App(QMainWindow):
         self.stack.addWidget(self.loadingFrame)
         self.stack.setCurrentWidget(self.loadingFrame)
         self.lastWidget = self.loadingFrame
+
+    #SS
+        self.screenshot_shortcut = QShortcut(QKeySequence("F12"), self)
+        self.screenshot_shortcut.activated.connect(self.take_screenshot)  
+
+    def take_screenshot(self):
+        if not os.path.exists("screenshots"):
+            os.makedirs("screenshots")
+            
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"screenshots/TruckCane_{timestamp}.png"
+
+        self.grab().save(filename)
+        print(f"Captured: {filename}")      
 
     def switch_screen(self, name, qt_img=None, timestamp=None, results=None, sauce=None):
         if self.lastWidget != None:
