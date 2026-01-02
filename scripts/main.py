@@ -16,7 +16,7 @@ class App(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("TruckCane AI")
-        self.setFixedSize(800, 416)
+        self.setFixedSize(800, 480)
 
         self.stack = QStackedWidget()
         self.setCentralWidget(self.stack)
