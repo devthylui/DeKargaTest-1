@@ -78,7 +78,7 @@ class loadingFrame(QMainWindow):
         self.statusLabel = QtWidgets.QLabel(parent=self.centerFrame)
         self.statusLabel.setStyleSheet("font: 500 10pt \"Segoe UI\"; color: rgb(55, 65, 81); background-color: transparent;")
         self.statusLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.statusLabel.setText("Initializing application...")
+        self.statusLabel.setText("Initializing Application...")
         self.statusLabel.setFixedHeight(20)
         self.loadingLayout.addWidget(self.statusLabel)
 
@@ -100,11 +100,9 @@ class loadingFrame(QMainWindow):
         self.setWindowTitle("TruckCane AI")
         self.loadStep = 0
         self.statusMessages = [
-            "Initializing Raspberry Pi 5...",
             "Initializing Camera Module...",
-            "Initializing Touch Display...",
             "Loading YOLOv11 Model...",
-            "Loading GUI..."
+            "Loading User Interface..."
         ]
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.fakeLoad(switch_callback))
