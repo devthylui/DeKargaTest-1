@@ -1,16 +1,8 @@
-from mainFrame import mainFrame
-from cameraFrame import cameraFrame
-from analysisFrame import analysisFrame
-from filesFrame import filesFrame
-from loadingFrame import loadingFrame
-from viewFrame import viewFrame
-
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
-
-#SS
-from PyQt6.QtGui import QShortcut, QKeySequence 
+import sys
 import datetime
 import os
+from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
+from PyQt6.QtGui import QShortcut, QKeySequence 
 
 class App(QMainWindow):
     def __init__(self):
@@ -21,21 +13,34 @@ class App(QMainWindow):
         self.stack = QStackedWidget()
         self.setCentralWidget(self.stack)
 
+        # Immediately show the Loading Frame
+        from .loadingFrame import loadingFrame
+        self.loadingFrame = loadingFrame(self.switch_screen)
+        
+        self.stack.addWidget(self.loadingFrame)
+        self.stack.setCurrentWidget(self.loadingFrame)
+        self.lastWidget = self.loadingFrame
+        
+        self.show()
+        QApplication.processEvents()
+
+        # Import Heavy Frames
+        from .mainFrame import mainFrame
+        from .cameraFrame import cameraFrame
+        from .analysisFrame import analysisFrame
+        from .filesFrame import filesFrame
+        from .viewFrame import viewFrame
+
+        # Initialize them
         self.mainFrame = mainFrame(self.switch_screen)
         self.cameraFrame = cameraFrame(self.switch_screen)
         self.analysisFrame = analysisFrame(self.switch_screen)
         self.filesFrame = filesFrame(self.switch_screen)
         self.viewFrame = viewFrame(self.switch_screen)
 
-        self.lastWidget = None
-        self.loadingFrame = loadingFrame(self.switch_screen)
-        self.stack.addWidget(self.loadingFrame)
-        self.stack.setCurrentWidget(self.loadingFrame)
-        self.lastWidget = self.loadingFrame
-
-    #SS
+        # SS
         self.screenshot_shortcut = QShortcut(QKeySequence("F12"), self)
-        self.screenshot_shortcut.activated.connect(self.take_screenshot)  
+        self.screenshot_shortcut.activated.connect(self.take_screenshot)   
 
     def take_screenshot(self):
         if not os.path.exists("screenshots"):
@@ -50,6 +55,7 @@ class App(QMainWindow):
     def switch_screen(self, name, qt_img=None, timestamp=None, results=None, sauce=None):
         if self.lastWidget != None:
             self.stack.removeWidget(self.lastWidget)
+        
         match name:
             case "main":
                 self.stack.addWidget(self.mainFrame)
@@ -70,10 +76,6 @@ class App(QMainWindow):
                 self.stack.setCurrentWidget(self.viewFrame)
                 self.viewFrame.loadImage(qt_img, timestamp, results, sauce)
                 self.lastWidget = self.viewFrame
-            case "settings":
-                self.stack.addWidget(self.settingsFrame)
-                self.stack.setCurrentWidget(self.settingsFrame)
-                self.lastWidget = self.settingsFrame
             case "files":
                 self.stack.addWidget(self.filesFrame)
                 self.stack.setCurrentWidget(self.filesFrame)
@@ -81,7 +83,6 @@ class App(QMainWindow):
                 self.lastWidget = self.filesFrame
 
 if __name__ == "__main__":
-    app = QApplication([])
+    app = QApplication(sys.argv)
     window = App()
-    window.show()
-    app.exec()
+    sys.exit(app.exec())
