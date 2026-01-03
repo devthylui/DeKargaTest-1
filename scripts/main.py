@@ -14,7 +14,7 @@ class App(QMainWindow):
         self.setCentralWidget(self.stack)
 
         # Immediately show the Loading Frame
-        from .loadingFrame import loadingFrame
+        from loadingFrame import loadingFrame
         self.loadingFrame = loadingFrame(self.switch_screen)
         
         self.stack.addWidget(self.loadingFrame)
@@ -25,11 +25,11 @@ class App(QMainWindow):
         QApplication.processEvents()
 
         # Import Heavy Frames
-        from .mainFrame import mainFrame
-        from .cameraFrame import cameraFrame
-        from .analysisFrame import analysisFrame
-        from .filesFrame import filesFrame
-        from .viewFrame import viewFrame
+        from mainFrame import mainFrame
+        from cameraFrame import cameraFrame
+        from analysisFrame import analysisFrame
+        from filesFrame import filesFrame
+        from viewFrame import viewFrame
 
         # Initialize them
         self.mainFrame = mainFrame(self.switch_screen)
