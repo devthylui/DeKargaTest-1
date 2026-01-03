@@ -1,6 +1,9 @@
 import sys
 import datetime
+
 import os
+os.environ["QT_QPA_PLATFORM"] = "xcb"
+
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 from PyQt6.QtGui import QShortcut, QKeySequence 
 
