@@ -198,6 +198,7 @@ class analysisFrame(QMainWindow):
         super().__init__()
 
         self.model = YOLO(resource_path('./resources/truck-cane-ai-training-4-model_ncnn_model'), task = 'detect')
+        self.confidence_threshold = 0.5
         
         self.setObjectName("mainFrame")
         self.resize(800, 480)
@@ -481,7 +482,7 @@ class analysisFrame(QMainWindow):
         ptr.setsize(h * w * 3)
         img_np = np.array(ptr, dtype=np.uint8).reshape((h, w, 3))
 
-        results_raw = self.model(img_np)
+        results_raw = self.model(img_np, conf=self.confidence_threshold)
         self.results = [[], self.model.names]
         for result in results_raw:
             boxes = result.boxes.xyxy.cpu().numpy()
