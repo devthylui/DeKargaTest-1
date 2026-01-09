@@ -29,6 +29,8 @@ class ConfirmDialog(QDialog):
     def __init__(self, title, message, parent=None):
         super().__init__(parent)
 
+        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint | QtCore.Qt.WindowType.Dialog)
+
         self.setWindowTitle(title)
         self.setFixedSize(350, 150)
         self.setModal(True)
