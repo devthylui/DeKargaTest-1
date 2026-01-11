@@ -29,7 +29,11 @@ class ConfirmDialog(QDialog):
     def __init__(self, title, message, parent=None):
         super().__init__(parent)
 
-        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint | QtCore.Qt.WindowType.Dialog)
+        self.setWindowFlags(
+            QtCore.Qt.WindowType.Dialog | 
+            QtCore.Qt.WindowType.FramelessWindowHint | 
+            QtCore.Qt.WindowType.WindowStaysOnTopHint
+        )
 
         self.setWindowTitle(title)
         self.setFixedSize(350, 150)
@@ -107,7 +111,7 @@ class ConfirmDialog(QDialog):
             "    padding-bottom: 9px;\n"
             "}")
 
-        self.yesButton.pressed.connect(self.accept) 
+        self.yesButton.clicked.connect(self.accept) 
         self.buttonLayout.addWidget(self.yesButton)
 
         self.mainLayout.addLayout(self.buttonLayout)
@@ -352,7 +356,7 @@ class filesFrame(QMainWindow):
         self.statusbar.setObjectName("statusbar")
         self.setStatusBar(self.statusbar)
 
-        self.backButton.pressed.connect(lambda: switch_callback("main"))
+        self.backButton.clicked.connect(lambda: switch_callback("main"))
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
