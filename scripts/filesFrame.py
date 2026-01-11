@@ -83,7 +83,7 @@ class ConfirmDialog(QDialog):
             "    padding-bottom: 9px;\n"
             "}")
 
-        self.noButton.clicked.connect(self.reject) 
+        self.noButton.pressed.connect(self.reject) 
         self.buttonLayout.addWidget(self.noButton)
 
         self.yesButton = QPushButton("Yes", self)
