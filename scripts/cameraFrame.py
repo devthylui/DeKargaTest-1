@@ -268,7 +268,7 @@ class cameraFrame(QMainWindow):
             self.cap = Picamera2()
             
             config = self.cap.create_video_configuration(
-                main={"size": (1440, 1080), "format": "BGR888"}
+                main={"size": (1920, 1080), "format": "BGR888"}
             )
             self.cap.configure(config)
             self.cap.start()
