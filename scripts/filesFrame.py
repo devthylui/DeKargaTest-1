@@ -107,7 +107,7 @@ class ConfirmDialog(QDialog):
             "    padding-bottom: 9px;\n"
             "}")
 
-        self.yesButton.clicked.connect(self.accept) 
+        self.yesButton.pressed.connect(self.accept) 
         self.buttonLayout.addWidget(self.yesButton)
 
         self.mainLayout.addLayout(self.buttonLayout)
@@ -352,7 +352,7 @@ class filesFrame(QMainWindow):
         self.statusbar.setObjectName("statusbar")
         self.setStatusBar(self.statusbar)
 
-        self.backButton.clicked.connect(lambda: switch_callback("main"))
+        self.backButton.pressed.connect(lambda: switch_callback("main"))
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
