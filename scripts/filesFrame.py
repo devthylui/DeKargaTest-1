@@ -29,11 +29,7 @@ class ConfirmDialog(QDialog):
     def __init__(self, title, message, parent=None):
         super().__init__(parent)
 
-        self.setWindowFlags(
-            QtCore.Qt.WindowType.Dialog | 
-            QtCore.Qt.WindowType.FramelessWindowHint | 
-            QtCore.Qt.WindowType.WindowStaysOnTopHint
-        )
+        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint | QtCore.Qt.WindowType.Dialog)
 
         self.setWindowTitle(title)
         self.setFixedSize(350, 150)
@@ -83,7 +79,7 @@ class ConfirmDialog(QDialog):
             "    padding-bottom: 9px;\n"
             "}")
 
-        self.noButton.pressed.connect(self.reject) 
+        self.noButton.clicked.connect(self.reject) 
         self.buttonLayout.addWidget(self.noButton)
 
         self.yesButton = QPushButton("Yes", self)
